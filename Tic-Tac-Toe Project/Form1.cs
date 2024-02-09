@@ -23,7 +23,9 @@ namespace Tic_Tac_Toe_Project
         int playerWinCount = 0;
         int CPUWinCount = 0;
 
-        int DrawCount = 0;
+        int TieCount = 0;
+
+        private int moves = 0;
 
         int GameStatus = 0;
 
@@ -44,6 +46,9 @@ namespace Tic_Tac_Toe_Project
                 currentPlayer = Player.O;
                 buttons[index].Text = currentPlayer.ToString();
                 buttons[index].BackColor = Color.Red;
+
+                moves++;
+
                 buttons.RemoveAt(index);
                 CheckGame();
                 CPUTimer.Stop();
@@ -58,6 +63,9 @@ namespace Tic_Tac_Toe_Project
             button.Text = currentPlayer.ToString();
             button.Enabled = false;
             button.BackColor = Color.Cyan;
+
+            moves++;
+
             buttons.Remove(button);
             CheckGame();
             CPUTimer.Start();
@@ -101,11 +109,16 @@ namespace Tic_Tac_Toe_Project
                     CPUWinCount++; // increase the CPU win count
                     CPUWinsText.Text = "CPU Wins " + CPUWinCount; // update CPU win count
                     RestartGame(); ; // Restarts the game
-            } 
-                
-        
+            }
+            else if (buttons.Count == 0)
+            {
+                CPUTimer.Stop();
+                MessageBox.Show("DRAW");
+                TieCount++; // increase the CPU win count
+                DrawScoreText.Text = "Ties " + TieCount; // update CPU win count
+                RestartGame(); ; // Restarts the game
+            }
         }
-
 
         private void RestartGame()
         {
@@ -118,5 +131,24 @@ namespace Tic_Tac_Toe_Project
                 x.BackColor = DefaultBackColor;
             }
         }
+
+        private bool CheckDraw()
+        {
+            return moves == 9;
+        }
+
+
+        private void CheckDraw(object sender, EventArgs e)
+        {
+            if (moves == 9) 
+            {
+                CPUTimer.Stop(); // stop the timer
+                MessageBox.Show("DRAW"); // displays message
+                TieCount++; // increase the CPU win count
+                DrawScoreText.Text = "Ties " + TieCount; // update CPU win count
+                RestartGame(); ; // Restarts the game
+            }
+        }
+
     }
 }
