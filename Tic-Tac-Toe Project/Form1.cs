@@ -22,6 +22,11 @@ namespace Tic_Tac_Toe_Project
         Random random = new Random();
         int playerWinCount = 0;
         int CPUWinCount = 0;
+
+        int DrawCount = 0;
+
+        int GameStatus = 0;
+
         List<Button> buttons;
 
         public TicTacToeGame()
@@ -78,9 +83,10 @@ namespace Tic_Tac_Toe_Project
                 MessageBox.Show("Player Wins"); // displays message
                 playerWinCount++; // increase the player win count
                 PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
-                RestartGame(); // Restarts the game
+                RestartGame(); // Restarts the game               
+
             }
-            // below if statement is for when the AI wins the game
+            // below if statement is for when the CPU wins the game
             else if (button1.Text == "O" && button2.Text == "O" && button3.Text == "O"
             || button4.Text == "O" && button5.Text == "O" && button6.Text == "O"
             || button7.Text == "O" && button9.Text == "O" && button8.Text == "O"
@@ -90,13 +96,17 @@ namespace Tic_Tac_Toe_Project
             || button1.Text == "O" && button5.Text == "O" && button9.Text == "O"
             || button3.Text == "O" && button5.Text == "O" && button7.Text == "O")
             {
-                CPUTimer.Stop(); // stop the timer
-                MessageBox.Show("Computer Wins"); // displays message
-                CPUWinCount++; // increase the CPU win count
-                CPUWinsText.Text = "CPU Wins " + CPUWinCount; // update CPU win count
-                RestartGame(); ; // Restarts the game
-            }
+                    CPUTimer.Stop(); // stop the timer
+                    MessageBox.Show("Computer Wins"); // displays message
+                    CPUWinCount++; // increase the CPU win count
+                    CPUWinsText.Text = "CPU Wins " + CPUWinCount; // update CPU win count
+                    RestartGame(); ; // Restarts the game
+            } 
+                
+        
         }
+
+
         private void RestartGame()
         {
             buttons = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9};

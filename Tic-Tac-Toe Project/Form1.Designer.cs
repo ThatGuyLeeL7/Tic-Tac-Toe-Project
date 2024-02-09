@@ -43,6 +43,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.DrawScoreText = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.CPUWinsText.AutoSize = true;
             this.CPUWinsText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CPUWinsText.ForeColor = System.Drawing.Color.Red;
-            this.CPUWinsText.Location = new System.Drawing.Point(605, 21);
+            this.CPUWinsText.Location = new System.Drawing.Point(606, 21);
             this.CPUWinsText.Name = "CPUWinsText";
             this.CPUWinsText.Size = new System.Drawing.Size(116, 25);
             this.CPUWinsText.TabIndex = 2;
@@ -92,7 +93,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 220);
+            this.button1.Size = new System.Drawing.Size(256, 220);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.PlayerClickButton);
@@ -102,9 +103,9 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(264, 3);
+            this.button2.Location = new System.Drawing.Point(265, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(255, 220);
+            this.button2.Size = new System.Drawing.Size(256, 220);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.PlayerClickButton);
@@ -114,7 +115,7 @@
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(525, 3);
+            this.button3.Location = new System.Drawing.Point(527, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(256, 220);
             this.button3.TabIndex = 3;
@@ -128,7 +129,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(3, 229);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(255, 220);
+            this.button4.Size = new System.Drawing.Size(256, 220);
             this.button4.TabIndex = 4;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.PlayerClickButton);
@@ -138,9 +139,9 @@
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(264, 229);
+            this.button5.Location = new System.Drawing.Point(265, 229);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(255, 220);
+            this.button5.Size = new System.Drawing.Size(256, 220);
             this.button5.TabIndex = 5;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.PlayerClickButton);
@@ -150,7 +151,7 @@
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(525, 229);
+            this.button6.Location = new System.Drawing.Point(527, 229);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(256, 220);
             this.button6.TabIndex = 6;
@@ -164,7 +165,7 @@
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Location = new System.Drawing.Point(3, 455);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(255, 221);
+            this.button7.Size = new System.Drawing.Size(256, 221);
             this.button7.TabIndex = 7;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.PlayerClickButton);
@@ -174,9 +175,9 @@
             this.button8.BackColor = System.Drawing.Color.White;
             this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(264, 455);
+            this.button8.Location = new System.Drawing.Point(265, 455);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(255, 221);
+            this.button8.Size = new System.Drawing.Size(256, 221);
             this.button8.TabIndex = 8;
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.PlayerClickButton);
@@ -186,7 +187,7 @@
             this.button9.BackColor = System.Drawing.Color.White;
             this.button9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(525, 455);
+            this.button9.Location = new System.Drawing.Point(527, 455);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(256, 221);
             this.button9.TabIndex = 9;
@@ -210,22 +211,35 @@
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 72);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(800, 800);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(400, 400);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 250F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 250F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 250F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 679);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 250F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 679);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // DrawScoreText
+            // 
+            this.DrawScoreText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DrawScoreText.AutoSize = true;
+            this.DrawScoreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DrawScoreText.ForeColor = System.Drawing.Color.Purple;
+            this.DrawScoreText.Location = new System.Drawing.Point(341, 21);
+            this.DrawScoreText.Name = "DrawScoreText";
+            this.DrawScoreText.Size = new System.Drawing.Size(66, 25);
+            this.DrawScoreText.TabIndex = 4;
+            this.DrawScoreText.Text = "Cat\'s:";
+            this.DrawScoreText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // TicTacToeGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 831);
+            this.ClientSize = new System.Drawing.Size(789, 864);
+            this.Controls.Add(this.DrawScoreText);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.CPUWinsText);
             this.Controls.Add(this.PlayerWinsText);
@@ -253,6 +267,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label DrawScoreText;
     }
 }
 
