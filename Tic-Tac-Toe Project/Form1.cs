@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Tic_Tac_Toe_Project
 {
-    public partial class TicTacToeGame : Form
+    public partial class TicTacToe : Form
     {
         public enum Player
         {
@@ -31,10 +31,17 @@ namespace Tic_Tac_Toe_Project
 
         List<Button> buttons;
 
-        public TicTacToeGame()
+        public TicTacToe()
         {
             InitializeComponent();
             RestartGame();
+            StopGame();
+            ExitGame();
+        }
+
+        private void RandomizePlayers()
+        {
+
         }
 
         private void CPUmove(object sender, EventArgs e)
@@ -46,9 +53,6 @@ namespace Tic_Tac_Toe_Project
                 currentPlayer = Player.O;
                 buttons[index].Text = currentPlayer.ToString();
                 buttons[index].BackColor = Color.Red;
-
-                moves++;
-
                 buttons.RemoveAt(index);
                 CheckGame();
                 CPUTimer.Stop();
@@ -63,9 +67,6 @@ namespace Tic_Tac_Toe_Project
             button.Text = currentPlayer.ToString();
             button.Enabled = false;
             button.BackColor = Color.Cyan;
-
-            moves++;
-
             buttons.Remove(button);
             CheckGame();
             CPUTimer.Start();
@@ -75,6 +76,17 @@ namespace Tic_Tac_Toe_Project
         {
             RestartGame();
         }
+
+        private void StopGame(object sender, EventArgs e)
+        {
+            StopGame();
+        }
+
+        private void ExitGame(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void CheckGame()
         {
             if (button1.Text == "X" && button2.Text == "X" && button3.Text == "X"
@@ -88,10 +100,12 @@ namespace Tic_Tac_Toe_Project
             {
                 // If any of the above conditions are met
                 CPUTimer.Stop(); // Stops the CPUTimer
-                MessageBox.Show("Player Wins"); // displays message
+                NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
                 playerWinCount++; // increase the player win count
                 PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
-                RestartGame(); // Restarts the game               
+                RestartGame(); // Restarts the game
+                StopGame(); // Stops the game
+                ExitGame(); // Exits the game
 
             }
             // below if statement is for when the CPU wins the game
@@ -105,18 +119,23 @@ namespace Tic_Tac_Toe_Project
             || button3.Text == "O" && button5.Text == "O" && button7.Text == "O")
             {
                     CPUTimer.Stop(); // stop the timer
-                    MessageBox.Show("Computer Wins"); // displays message
+                    NotificationBox.Text = "CPU Wins"; // displays message
                     CPUWinCount++; // increase the CPU win count
                     CPUWinsText.Text = "CPU Wins " + CPUWinCount; // update CPU win count
                     RestartGame(); ; // Restarts the game
+                    StopGame(); // Stops the game
+                    ExitGame(); // Exits the game
+
             }
             else if (buttons.Count == 0)
             {
                 CPUTimer.Stop();
-                MessageBox.Show("DRAW");
+                NotificationBox.Text = "Draw";
                 TieCount++; // increase the CPU win count
                 DrawScoreText.Text = "Ties " + TieCount; // update CPU win count
                 RestartGame(); ; // Restarts the game
+                StopGame(); // Stops the game
+                ExitGame(); // Exits the game
             }
         }
 
@@ -131,24 +150,34 @@ namespace Tic_Tac_Toe_Project
                 x.BackColor = DefaultBackColor;
             }
         }
-
-        private bool CheckDraw()
+        private void StopGame()
         {
-            return moves == 9;
-        }
+            buttons = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
 
-
-        private void CheckDraw(object sender, EventArgs e)
-        {
-            if (moves == 9) 
+            foreach (Button x in buttons)
             {
-                CPUTimer.Stop(); // stop the timer
-                MessageBox.Show("DRAW"); // displays message
-                TieCount++; // increase the CPU win count
-                DrawScoreText.Text = "Ties " + TieCount; // update CPU win count
-                RestartGame(); ; // Restarts the game
+                x.Enabled = true;
+                x.Text = " ";
+                x.BackColor = DefaultBackColor;
             }
         }
 
+        private void ExitGame()
+        {
+            buttons = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
+
+            foreach (Button x in buttons)
+            {
+                x.Enabled = true;
+                x.Text = " ";
+                x.BackColor = DefaultBackColor;
+            }
+        }
+
+        private void EnterButton_Click(object sender, EventArgs e)
+        {
+            NameLabel.Text = textBox1.Text;
+            textBox1.Text = "Welcome!";
+        }
     }
 }

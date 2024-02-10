@@ -1,5 +1,4 @@
 C:\Users\thatg\OneDrive\Documents\One Drive\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic-Tac-Toe Project.csproj.AssemblyReference.cache
-C:\Users\thatg\OneDrive\Documents\One Drive\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic_Tac_Toe_Project.TicTacToeGame.resources
 C:\Users\thatg\OneDrive\Documents\One Drive\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic_Tac_Toe_Project.Properties.Resources.resources
 C:\Users\thatg\OneDrive\Documents\One Drive\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic-Tac-Toe Project.csproj.GenerateResource.cache
 C:\Users\thatg\OneDrive\Documents\One Drive\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic-Tac-Toe Project.csproj.CoreCompileInputs.cache
@@ -18,3 +17,4 @@ C:\Users\thatg\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj
 C:\Users\thatg\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic-Tac-Toe Project.csproj.CoreCompileInputs.cache
 C:\Users\thatg\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic-Tac-Toe Project.exe
 C:\Users\thatg\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic-Tac-Toe Project.pdb
+C:\Users\thatg\OneDrive\Documents\One Drive\OneDrive\Documents\Visual Studio Projects\Tic-Tac-Toe Project\obj\Debug\Tic_Tac_Toe_Project.TicTacToe.resources

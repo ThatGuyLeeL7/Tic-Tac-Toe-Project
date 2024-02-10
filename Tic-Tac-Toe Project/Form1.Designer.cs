@@ -1,6 +1,6 @@
 ﻿namespace Tic_Tac_Toe_Project
 {
-    partial class TicTacToeGame
+    partial class TicTacToe
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.PlayerWinsText = new System.Windows.Forms.Label();
             this.CPUWinsText = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
             this.CPUTimer = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -43,7 +43,14 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.StopButton = new System.Windows.Forms.Button();
             this.DrawScoreText = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NotificationBox = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.EnterButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,16 +81,16 @@
             this.CPUWinsText.Text = "CPU Wins:";
             this.CPUWinsText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button10
+            // StartButton
             // 
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(3, 819);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(100, 38);
-            this.button10.TabIndex = 3;
-            this.button10.Text = "Start";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.RestartGame);
+            this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartButton.Location = new System.Drawing.Point(3, 819);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(100, 38);
+            this.StartButton.TabIndex = 3;
+            this.StartButton.Text = "Start";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.RestartGame);
             // 
             // CPUTimer
             // 
@@ -206,6 +213,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 250F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 250F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.ExitButton, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.StopButton, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.CPUWinsText, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.button7, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.button8, 1, 4);
@@ -218,7 +227,10 @@
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.DrawScoreText, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.PlayerWinsText, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button10, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.StartButton, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.NotificationBox, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.NameLabel, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -233,6 +245,28 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(789, 864);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.Location = new System.Drawing.Point(529, 819);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(100, 38);
+            this.ExitButton.TabIndex = 16;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitGame);
+            // 
+            // StopButton
+            // 
+            this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StopButton.Location = new System.Drawing.Point(266, 819);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(100, 38);
+            this.StopButton.TabIndex = 15;
+            this.StopButton.Text = "Stop";
+            this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopGame);
+            // 
             // DrawScoreText
             // 
             this.DrawScoreText.AutoSize = true;
@@ -246,14 +280,63 @@
             this.DrawScoreText.Text = "Ties:";
             this.DrawScoreText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // TicTacToeGame
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(257, 31);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.Text = "Enter your name here";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NotificationBox
+            // 
+            this.NotificationBox.AutoSize = true;
+            this.NotificationBox.BackColor = System.Drawing.Color.Transparent;
+            this.NotificationBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NotificationBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationBox.ForeColor = System.Drawing.Color.Black;
+            this.NotificationBox.Location = new System.Drawing.Point(529, 0);
+            this.NotificationBox.Name = "NotificationBox";
+            this.NotificationBox.Size = new System.Drawing.Size(257, 48);
+            this.NotificationBox.TabIndex = 11;
+            this.NotificationBox.Text = "Tic-Tac-Toe";
+            this.NotificationBox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameLabel.Location = new System.Drawing.Point(266, 0);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(257, 48);
+            this.NameLabel.TabIndex = 14;
+            this.NameLabel.Text = "Player";
+            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // EnterButton
+            // 
+            this.EnterButton.BackColor = System.Drawing.Color.Red;
+            this.EnterButton.Location = new System.Drawing.Point(4, 7);
+            this.EnterButton.Name = "EnterButton";
+            this.EnterButton.Size = new System.Drawing.Size(23, 23);
+            this.EnterButton.TabIndex = 1;
+            this.EnterButton.UseVisualStyleBackColor = false;
+            this.EnterButton.Click += new System.EventHandler(this.EnterButton_Click);
+            // 
+            // TicTacToe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 864);
+            this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "TicTacToeGame";
-            this.Text = "Form1";
+            this.MinimumSize = new System.Drawing.Size(800, 800);
+            this.Name = "TicTacToe";
+            this.Text = "Tic-Tac-Toe";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -263,7 +346,7 @@
         #endregion
         private System.Windows.Forms.Label PlayerWinsText;
         private System.Windows.Forms.Label CPUWinsText;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.Timer CPUTimer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -276,6 +359,13 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label DrawScoreText;
+        private System.Windows.Forms.Label NotificationBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button EnterButton;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button StopButton;
     }
 }
 
