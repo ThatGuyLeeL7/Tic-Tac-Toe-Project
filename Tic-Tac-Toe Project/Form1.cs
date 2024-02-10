@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using static Tic_Tac_Toe_Project.TicTacToe;
 using System.IO;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Tic_Tac_Toe_Project
 {
@@ -85,6 +86,30 @@ namespace Tic_Tac_Toe_Project
 
         private void RestartGame(object sender, EventArgs e)
         {
+            NameLabel.Text = textBox1.Text;
+            textBox1.Text = "Welcome!";
+
+            StreamWriter WinsFile = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Wins.txt");
+            //Write a line of text
+            WinsFile.WriteLine(NameLabel.Text + " Wins: 0");
+
+            //Close the file
+            WinsFile.Close();
+
+            StreamWriter LossesFile = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Losses.txt");
+            //Write a line of text
+            LossesFile.WriteLine("CPU Wins: 0");
+
+            //Close the file
+            LossesFile.Close();
+
+            StreamWriter TiesFile = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Draws.txt");
+            //Write a line of text
+            TiesFile.WriteLine("Ties: 0");
+
+            //Close the file
+            TiesFile.Close();
+
             RestartGame();
         }
 
@@ -115,13 +140,27 @@ namespace Tic_Tac_Toe_Project
                 {
                     playerWinCount++; // increase the player win count
                     NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
-                    PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
+                    PlayerWinsText.Text = NameLabel.Text + " Wins: " + playerWinCount; // update player win count
+
+                    StreamWriter sw = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Wins.txt");
+                    //Write a line of text
+                    sw.WriteLine(NameLabel.Text + " Wins: " + playerWinCount);
+                 
+                    //Close the file
+                    sw.Close();
                 }
                 else
                 {
                     NotificationBox.Text = "CPU WINS";
                     CPUWinCount++;
                     CPUWinsText.Text = "CPU Wins " + CPUWinCount;
+
+                    StreamWriter sw = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Losses.txt");
+                    //Write a line of text
+                    sw.WriteLine("CPU Wins: " + CPUWinCount);
+
+                    //Close the file
+                    sw.Close();
                 }
                 RestartGame(); // Restarts the game
             }
@@ -141,13 +180,27 @@ namespace Tic_Tac_Toe_Project
                 {
                     playerWinCount++; // increase the player win count
                     NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
-                    PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
+                    PlayerWinsText.Text = NameLabel.Text + " Wins: " + playerWinCount; // update player win count
+
+                    StreamWriter sw = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Wins.txt");
+                    //Write a line of text
+                    sw.WriteLine(NameLabel.Text + " Wins: " + playerWinCount);
+
+                    //Close the file
+                    sw.Close();
                 }
                 else
                 {
                     NotificationBox.Text = "CPU WINS";
                     CPUWinCount++;
                     CPUWinsText.Text = "CPU Wins " + CPUWinCount;
+
+                    StreamWriter sw = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Losses.txt");
+                    //Write a line of text
+                    sw.WriteLine("CPU Wins: " + CPUWinCount);
+
+                    //Close the file
+                    sw.Close();
                 }
                 RestartGame(); // Restarts the game
             }
@@ -157,13 +210,40 @@ namespace Tic_Tac_Toe_Project
                 NotificationBox.Text = "Draw";
                 TieCount++; // increase the CPU win count
                 DrawScoreText.Text = "Ties: " + TieCount; // update CPU win count
-                RestartGame(); ; // Restarts the game
+
+                StreamWriter sw = new StreamWriter("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Draws.txt");
+                //Write a line of text
+                sw.WriteLine("Ties: " + TieCount);
+
+                //Close the file
+                sw.Close();
+
+                RestartGame(); // Restarts the game
             }
         }
 
         private void RestartGame()
         {
             buttons = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9};
+
+            //Pass the file path and file name to the StreamReader constructor
+            StreamReader WinsText = new StreamReader("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Wins.txt");
+            StreamReader LossText = new StreamReader("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Losses.txt");
+            StreamReader TieText = new StreamReader("C:\\Users\\thatg\\OneDrive\\Documents\\One Drive\\OneDrive\\Documents\\Visual Studio Projects\\Tic-Tac-Toe Project\\Draws.txt");
+
+            string line1 = WinsText.ReadLine();
+            string line2 = LossText.ReadLine();
+            string line3 = TieText.ReadLine();
+
+
+            //Read the first line of text
+            PlayerWinsText.Text = line1;
+            CPUWinsText.Text = line2;
+            DrawScoreText.Text = line3;
+            WinsText.Close();
+            LossText.Close();
+            TieText.Close();
+
 
             foreach (Button x in buttons)
             {
