@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using static Tic_Tac_Toe_Project.TicTacToe;
 
 namespace Tic_Tac_Toe_Project
 {
@@ -22,14 +25,26 @@ namespace Tic_Tac_Toe_Project
         Random random = new Random();
         int playerWinCount = 0;
         int CPUWinCount = 0;
-
         int TieCount = 0;
 
-        private int moves = 0;
-
-        int GameStatus = 0;
-
         List<Button> buttons;
+        Player playerA;
+        Player playerB;
+        Random rand = new Random();
+
+        private void RandomizePlayers()
+        {
+            if (rand.Next(2) == 0)
+            {
+                playerA = Player.X;
+                playerB = Player.O;
+            }
+            else
+            {
+                playerA = Player.O;
+                playerB = Player.X;
+            }
+        }
 
         public TicTacToe()
         {
@@ -39,19 +54,15 @@ namespace Tic_Tac_Toe_Project
             ExitGame();
         }
 
-        private void RandomizePlayers()
-        {
-
-        }
-
+       
         private void CPUmove(object sender, EventArgs e)
         {
+
             if (buttons.Count > 0)
             {
                 int index = random.Next(buttons.Count);
                 buttons[index].Enabled = false;
-                currentPlayer = Player.O;
-                buttons[index].Text = currentPlayer.ToString();
+                buttons[index].Text = playerB.ToString();
                 buttons[index].BackColor = Color.Red;
                 buttons.RemoveAt(index);
                 CheckGame();
@@ -63,8 +74,8 @@ namespace Tic_Tac_Toe_Project
         {
             var button = (Button)sender;
 
-            currentPlayer = Player.X;
-            button.Text = currentPlayer.ToString();
+            button.Text = playerA.ToString();
+            
             button.Enabled = false;
             button.BackColor = Color.Cyan;
             buttons.Remove(button);
@@ -99,14 +110,20 @@ namespace Tic_Tac_Toe_Project
                     || button3.Text == "X" && button5.Text == "X" && button7.Text == "X")
             {
                 // If any of the above conditions are met
-                CPUTimer.Stop(); // Stops the CPUTimer
-                NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
-                playerWinCount++; // increase the player win count
-                PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
-                RestartGame(); // Restarts the game
+                CPUTimer.Stop();
+                if (playerA == Player.X)
+                {
+                    playerWinCount++; // increase the player win count
+                    NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
+                    PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
+                }
+                else
+                {
+                    NotificationBox.Text = "CPU WIN";
+                }
+                RestartGame();
                 StopGame(); // Stops the game
                 ExitGame(); // Exits the game
-
             }
             // below if statement is for when the CPU wins the game
             else if (button1.Text == "O" && button2.Text == "O" && button3.Text == "O"
@@ -118,14 +135,21 @@ namespace Tic_Tac_Toe_Project
             || button1.Text == "O" && button5.Text == "O" && button9.Text == "O"
             || button3.Text == "O" && button5.Text == "O" && button7.Text == "O")
             {
-                    CPUTimer.Stop(); // stop the timer
-                    NotificationBox.Text = "CPU Wins"; // displays message
-                    CPUWinCount++; // increase the CPU win count
-                    CPUWinsText.Text = "CPU Wins " + CPUWinCount; // update CPU win count
-                    RestartGame(); ; // Restarts the game
-                    StopGame(); // Stops the game
-                    ExitGame(); // Exits the game
-
+                // If any of the above conditions are met
+                CPUTimer.Stop();
+                if (playerA == Player.O)
+                {
+                    playerWinCount++; // increase the player win count
+                    NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
+                    PlayerWinsText.Text = "Player Wins " + playerWinCount; // update player win count
+                }
+                else
+                {
+                    NotificationBox.Text = "CPU WIN";
+                }
+                RestartGame();
+                StopGame(); // Stops the game
+                ExitGame(); // Exits the game
             }
             else if (buttons.Count == 0)
             {
@@ -148,6 +172,11 @@ namespace Tic_Tac_Toe_Project
                 x.Enabled = true;
                 x.Text = " ";
                 x.BackColor = DefaultBackColor;
+            }
+            RandomizePlayers();
+            if (playerA == Player.O)
+            {
+                CPUTimer.Start();
             }
         }
         private void StopGame()
