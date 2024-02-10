@@ -22,33 +22,32 @@ namespace Tic_Tac_Toe_Project
         {
             X, O
         }
-
-        string filePathWins = "Wins.txt";
-        string filePathLosses = "Losses.txt";
-        string filePathTies = "Draws.txt";
+        string filePathWins = "Wins.txt"; // References the path to the txt file
+        string filePathLosses = "Losses.txt"; // References the path to the txt file
+        string filePathTies = "Draws.txt"; // References the path to the txt file
 
         Player currentPlayer;
         Random random = new Random();
-        int playerWinCount = 0;
-        int CPUWinCount = 0;
-        int TieCount = 0;
+        int playerWinCount = 0; // player win count
+        int CPUWinCount = 0; // computer win count
+        int TieCount = 0; // tie count
 
         List<Button> buttons;
         Player playerA;
         Player playerB;
         Random rand = new Random();
 
-        private void RandomizePlayers()
+        private void RandomizePlayers() 
         {
-            if (rand.Next(2) == 0)
+            if (rand.Next(2) == 0) 
             {
-                playerA = Player.X;
-                playerB = Player.O;
+                playerA = Player.X; // player will play as X
+                playerB = Player.O; // Computer will player as O
             }
             else
             {
-                playerA = Player.O;
-                playerB = Player.X;
+                playerA = Player.O; // player will play as O
+                playerB = Player.X; // Computer will play as X
             }
         }
 
@@ -61,13 +60,13 @@ namespace Tic_Tac_Toe_Project
         }
 
        
-        private void CPUmove(object sender, EventArgs e)
+        private void CPUmove(object sender, EventArgs e) //this method allows for the CPU to make their turn
         {
-            if (buttons.Count > 0)
+            if (buttons.Count > 0) //will activate if there are buttons available to click
             {
                 int index = random.Next(buttons.Count);
                 buttons[index].Enabled = false;
-                buttons[index].Text = playerB.ToString();
+                buttons[index].Text = playerB.ToString(); //Sets the text of the button depending on the CPU
                 buttons[index].BackColor = Color.Red;
                 buttons.RemoveAt(index);
                 CheckGame();
@@ -146,7 +145,7 @@ namespace Tic_Tac_Toe_Project
                     NotificationBox.Text = NameLabel.Text + " " + "Wins"; // displays message
                     PlayerWinsText.Text = NameLabel.Text + " Wins: " + playerWinCount; // update player win count
 
-                    StreamWriter sw = new StreamWriter(filePathWins);
+                    StreamWriter sw = new StreamWriter(filePathWins); 
                     //Write a line of text
                     sw.WriteLine(NameLabel.Text + " Wins: " + playerWinCount);
                  
