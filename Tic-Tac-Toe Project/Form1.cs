@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using static Tic_Tac_Toe_Project.TicTacToe;
+using System.IO;
 
 namespace Tic_Tac_Toe_Project
 {
@@ -57,7 +58,6 @@ namespace Tic_Tac_Toe_Project
        
         private void CPUmove(object sender, EventArgs e)
         {
-
             if (buttons.Count > 0)
             {
                 int index = random.Next(buttons.Count);
@@ -67,7 +67,7 @@ namespace Tic_Tac_Toe_Project
                 buttons.RemoveAt(index);
                 CheckGame();
                 CPUTimer.Stop();
-            }
+            } 
         }
 
         private void PlayerClickButton(object sender, EventArgs e)
@@ -119,11 +119,11 @@ namespace Tic_Tac_Toe_Project
                 }
                 else
                 {
-                    NotificationBox.Text = "CPU WIN";
+                    NotificationBox.Text = "CPU WINS";
+                    CPUWinCount++;
+                    CPUWinsText.Text = "CPU Wins " + CPUWinCount;
                 }
-                RestartGame();
-                StopGame(); // Stops the game
-                ExitGame(); // Exits the game
+                RestartGame(); // Restarts the game
             }
             // below if statement is for when the CPU wins the game
             else if (button1.Text == "O" && button2.Text == "O" && button3.Text == "O"
@@ -145,21 +145,19 @@ namespace Tic_Tac_Toe_Project
                 }
                 else
                 {
-                    NotificationBox.Text = "CPU WIN";
+                    NotificationBox.Text = "CPU WINS";
+                    CPUWinCount++;
+                    CPUWinsText.Text = "CPU Wins " + CPUWinCount;
                 }
-                RestartGame();
-                StopGame(); // Stops the game
-                ExitGame(); // Exits the game
+                RestartGame(); // Restarts the game
             }
             else if (buttons.Count == 0)
             {
                 CPUTimer.Stop();
                 NotificationBox.Text = "Draw";
                 TieCount++; // increase the CPU win count
-                DrawScoreText.Text = "Ties " + TieCount; // update CPU win count
+                DrawScoreText.Text = "Ties: " + TieCount; // update CPU win count
                 RestartGame(); ; // Restarts the game
-                StopGame(); // Stops the game
-                ExitGame(); // Exits the game
             }
         }
 

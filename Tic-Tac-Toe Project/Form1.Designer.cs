@@ -49,7 +49,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.NotificationBox = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.EnterButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -360,7 +359,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label DrawScoreText;
         private System.Windows.Forms.Label NotificationBox;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button EnterButton;
