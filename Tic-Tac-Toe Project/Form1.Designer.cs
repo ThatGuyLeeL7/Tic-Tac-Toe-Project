@@ -89,7 +89,7 @@
             this.StartButton.TabIndex = 3;
             this.StartButton.Text = "Start Game";
             this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.RestartGame);
+            this.StartButton.Click += new System.EventHandler(this.StartGame);
             // 
             // CPUTimer
             // 
